@@ -28,8 +28,9 @@ public class addToList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String title = et_title.getText().toString();
+                Task task = new Task(title);
                 Intent i = new Intent();
-                i.putExtra("NEWTASK", title);
+                i.putExtra("NEWTASK", task);
                 setResult(2,i);
                 finish();
             }

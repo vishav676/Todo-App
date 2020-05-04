@@ -1,13 +1,20 @@
 package com.vishavlakhtia.todo;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,16 +27,21 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton bt_add;
     ListView listView;
     ArrayAdapter adapter;
-    ArrayList<String> lists = new ArrayList<String>();
+    ArrayList<Task> lists = new ArrayList<Task>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView)findViewById(R.id.lv_todo);
-        adapter = new ArrayAdapter<String>(this,R.layout.item_list,R.id.disTitle,lists);
+        listView = (ListView) findViewById(R.id.lv_todo);
+        adapter = new fetchTask(getApplicationContext(),lists);
         listView.setAdapter(adapter);
-
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyDataSetChanged();
+            }
+        });
         bt_add = (FloatingActionButton) findViewById(R.id.floatingActionButton2);
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2)
         {
-            String title = data.getStringExtra("NEWTASK");
+            Task title = (Task) data.getParcelableExtra("NEWTASK");
             adapter.add(title);
         }
     }
+
 }
