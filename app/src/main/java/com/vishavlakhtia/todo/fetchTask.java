@@ -41,7 +41,8 @@ public class fetchTask extends ArrayAdapter{
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"delete "+ task.toString(),Toast.LENGTH_SHORT).show();
-                db.deleteTask((Integer)position);
+                db.deleteTask((task.toString()));
+                dataSet.remove(position);
                 notifyDataSetChanged();
             }
         });

@@ -43,10 +43,10 @@ public class DBHelper extends SQLiteOpenHelper {
         return (int)DatabaseUtils.queryNumEntries(db,TABLE_NAME);
 
     }
-    public void deleteTask(Integer id)
+    public void deleteTask(String id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("TaskTable","id = ?",new String[]{Integer.toString(id)});
+        db.delete("TaskTable","Title = ?",new String[]{id});
     }
 
     public ArrayList<String> getAllTask()
