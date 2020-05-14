@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".login">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/email_sign"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/list_anim" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:id="@+id/email_sign"
+        android:background="@color/colorAccent"
+        android:hint="Email"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:paddingLeft="8dp"
+        android:textColor="@color/text_color"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/pass_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:layout_margin="16dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/text_color"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:elevation="2dp"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/email_sign"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lottie_autoPlay="true"
+        android:id="@+id/bt_sign"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/button_anim"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/pass_sign"
+        app:layout_constraintStart_toStartOf="@+id/pass_sign"
+        app:layout_constraintTop_toBottomOf="@id/pass_sign" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
